@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  * @author Flo
  */
 @Entity
-class OilCompany extends SingleIdEntity {
+public class OilCompany extends SingleIdEntity {
     
     private String name;
     private long zipCode;
