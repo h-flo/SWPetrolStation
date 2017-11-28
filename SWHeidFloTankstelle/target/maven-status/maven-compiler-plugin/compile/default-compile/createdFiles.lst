@@ -11,10 +11,13 @@ de\othr\heid\swheidflotankstelle\entity\PSOrder_.class
 de\othr\heid\swheidflotankstelle\entity\OilCompany_.class
 de\othr\heid\swheidflotankstelle\service\StudierendenService.class
 de\othr\heid\swheidflotankstelle\entity\Fuel_.class
+de\othr\heid\swheidflotankstelle\service\FuelService.class
 de\othr\heid\swheidflotankstelle\entity\OilCompany.class
 de\othr\heid\swheidflotankstelle\entity\Refueling.class
+de\othr\heid\swheidflotankstelle\service\CRMService.class
 de\othr\heid\swheidflotankstelle\entity\Student.class
 de\othr\heid\swheidflotankstelle\entity\DeliveryNote.class
 de\othr\heid\swheidflotankstelle\entity\Refueling_.class
+de\othr\heid\swheidflotankstelle\service\DeliveryService.class
 de\othr\heid\swheidflotankstelle\entity\DeliveryNote_.class
 de\othr\heid\swheidflotankstelle\entity\ShippingCompany_.class

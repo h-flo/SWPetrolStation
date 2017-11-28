@@ -5,7 +5,11 @@
  */
 package de.othr.heid.swheidflotankstelle.ui;
 
+import de.othr.heid.swheidflotankstelle.entity.Fuel;
 import de.othr.heid.swheidflotankstelle.entity.Student;
+import de.othr.heid.swheidflotankstelle.service.CRMService;
+import de.othr.heid.swheidflotankstelle.service.DeliveryService;
+import de.othr.heid.swheidflotankstelle.service.FuelService;
 import de.othr.heid.swheidflotankstelle.service.StudierendenService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,6 +40,15 @@ public class EntityTester extends HttpServlet {
     @Inject
     private StudierendenService service;
     
+    @Inject
+    private FuelService fuelService;
+    
+    @Inject 
+    private DeliveryService devService;
+    
+    @Inject
+    private CRMService crmService;
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,11 +63,24 @@ public class EntityTester extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet EntityTester at " + request.getContextPath() + "</h1>");
            
-            Student s = new Student("Max", "Muster");
             
-            s = service.immatrikulieren(s);
+            /*
+            Fuel f1 = new Fuel("Super", 1.31);
+            Fuel f2 = new Fuel("Super Plus", 1.38);
+            Fuel f3 = new Fuel("Super E10", 1.29);
+            Fuel f4 = new Fuel("LKW Diesel", 1.14);
             
-            out.println("Student wurde angelegt mit Matrikelnr. " + s.getMatrikelNr());
+            f1 = fuelService.addFuel(f1);
+            f2 = fuelService.addFuel(f2);
+            f3 = fuelService.addFuel(f3);
+            f4 = fuelService.addFuel(f4);
+            
+            fuelService.changeFuelPrice(1, 1.14);
+            */
+            
+            
+            
+            //out.println("Fuelpreis wurde geändert: " + f.getPrice());
             
             out.println("</body>");
             out.println("</html>");
