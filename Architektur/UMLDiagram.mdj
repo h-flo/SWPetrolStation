@@ -8830,7 +8830,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Send delivery note",
+											"text": "Generate delivery note",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -12161,7 +12161,7 @@
 							"width": 265,
 							"height": 81,
 							"autoResize": false,
-							"text": "- Oberfläche für die Verwaltung von OilCompanies aufrufen\n- Nach entsprechender Firma suchen und löschen \n- ODER neue OilCompany hinzufügen",
+							"text": "- Select \"Manage Oil Companies\"\n- Select either Add or Remove \n- Add: Fill in information and add\n- Remove: Fill in oilCompanyId to remove ",
 							"wordWrap": true
 						},
 						{
@@ -12206,9 +12206,9 @@
 							"left": 768,
 							"top": 256,
 							"width": 265,
-							"height": 97,
+							"height": 94,
 							"autoResize": false,
-							"text": "Oberfläche für die Verwaltung von ShippingCompanies aufrufen\n- Nach entsprechender Firma suchen und löschen \n- ODER neue ShippingCompany hinzufügen",
+							"text": "- Select \"Manage ShippingCompanies\"\n- Select either Add or Remove \n- Add: Fill in information and add\n- Remove: Fill in shippingCompanyId to remove",
 							"wordWrap": true
 						},
 						{
@@ -12233,54 +12233,7 @@
 								"$ref": "AAAAAAFfunD+jQQ96Vo="
 							},
 							"lineStyle": 1,
-							"points": "740:300;767:301"
-						},
-						{
-							"_type": "UMLNoteView",
-							"_id": "AAAAAAFf3mlmO+ok/IQ=",
-							"_parent": {
-								"$ref": "AAAAAAFfukK/td6nkx8="
-							},
-							"visible": true,
-							"enabled": true,
-							"lineColor": "#000000",
-							"fillColor": "#ffffff",
-							"fontColor": "#000000",
-							"font": "Arial;13;0",
-							"showShadow": true,
-							"containerChangeable": false,
-							"containerExtending": false,
-							"left": 760,
-							"top": 360,
-							"width": 281,
-							"height": 53,
-							"autoResize": false,
-							"text": "- Oberfläche für die Orders aufrufen\n- Alle bisher durchgeführten Orders werden angezeigt",
-							"wordWrap": true
-						},
-						{
-							"_type": "UMLNoteLinkView",
-							"_id": "AAAAAAFf3mlmQ+onSuE=",
-							"_parent": {
-								"$ref": "AAAAAAFfukK/td6nkx8="
-							},
-							"visible": true,
-							"enabled": true,
-							"lineColor": "#000000",
-							"fillColor": "#ffffff",
-							"fontColor": "#000000",
-							"font": "Arial;13;0",
-							"showShadow": true,
-							"containerChangeable": false,
-							"containerExtending": false,
-							"head": {
-								"$ref": "AAAAAAFf3mlmO+ok/IQ="
-							},
-							"tail": {
-								"$ref": "AAAAAAFfukbIJOFXm/o="
-							},
-							"lineStyle": 1,
-							"points": "681:374;759:378"
+							"points": "740:299;767:300"
 						},
 						{
 							"_type": "UMLNoteView",
@@ -12299,10 +12252,10 @@
 							"containerExtending": false,
 							"left": 752,
 							"top": 416,
-							"width": 273,
-							"height": 66,
+							"width": 265,
+							"height": 41,
 							"autoResize": false,
-							"text": "- Oberfläche für die Änderung der Preise aufrufen\n- Änderung durch Eingeben des neuen Preises",
+							"text": "- Select \"Change station fuel prices\"\n- Select fuel type and add desired price",
 							"wordWrap": true
 						},
 						{
@@ -12327,54 +12280,7 @@
 								"$ref": "AAAAAAFfukdequG2YHs="
 							},
 							"lineStyle": 1,
-							"points": "702:433;751:437"
-						},
-						{
-							"_type": "UMLNoteView",
-							"_id": "AAAAAAFf3mp53+08A28=",
-							"_parent": {
-								"$ref": "AAAAAAFfukK/td6nkx8="
-							},
-							"visible": true,
-							"enabled": true,
-							"lineColor": "#000000",
-							"fillColor": "#ffffff",
-							"fontColor": "#000000",
-							"font": "Arial;13;0",
-							"showShadow": true,
-							"containerChangeable": false,
-							"containerExtending": false,
-							"left": 752,
-							"top": 488,
-							"width": 209,
-							"height": 66,
-							"autoResize": false,
-							"text": "- Öberfläche für die DeliveryNotes aufrufen \n- Alle bisher durchgeführten Deliveries werden angezeigt",
-							"wordWrap": true
-						},
-						{
-							"_type": "UMLNoteLinkView",
-							"_id": "AAAAAAFf3mp55+0/FNE=",
-							"_parent": {
-								"$ref": "AAAAAAFfukK/td6nkx8="
-							},
-							"visible": true,
-							"enabled": true,
-							"lineColor": "#000000",
-							"fillColor": "#ffffff",
-							"fontColor": "#000000",
-							"font": "Arial;13;0",
-							"showShadow": true,
-							"containerChangeable": false,
-							"containerExtending": false,
-							"head": {
-								"$ref": "AAAAAAFf3mp53+08A28="
-							},
-							"tail": {
-								"$ref": "AAAAAAFf2NyFbO9prQc="
-							},
-							"lineStyle": 1,
-							"points": "641:497;751:509"
+							"points": "702:429;751:431"
 						},
 						{
 							"_type": "UMLNoteView",
@@ -12394,9 +12300,9 @@
 							"left": 848,
 							"top": 608,
 							"width": 185,
-							"height": 79,
+							"height": 92,
 							"autoResize": false,
-							"text": "- Die Shipping Company erstellt eine DeliveryNote\n- Die DeliveryNote wird an die Petrol Station weitergeleitet",
+							"text": "- transmit the shippingCompanyId, the fuel amount in liter, the fuel type\n- generates a delivery note which completes the delivery",
 							"wordWrap": true
 						},
 						{
@@ -12421,7 +12327,7 @@
 								"$ref": "AAAAAAFfumF85+5GXJg="
 							},
 							"lineStyle": 1,
-							"points": "811:639;847:642"
+							"points": "811:642;847:645"
 						}
 					]
 				},
@@ -12499,7 +12405,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFfukPUot74sHY="
 							},
-							"name": "Send delivery note",
+							"name": "Generate delivery note",
 							"visibility": "public",
 							"isAbstract": false,
 							"isFinalSpecialization": false,
@@ -13539,7 +13445,7 @@
 									"height": 13,
 									"autoResize": false,
 									"underline": false,
-									"text": "Persistance",
+									"text": "Persistence",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false
@@ -13946,7 +13852,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Persistance Provider",
+											"text": "Persistence Provider",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -19282,7 +19188,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFf2KJKV8S5JBw="
 							},
-							"name": "Persistance",
+							"name": "Persistence",
 							"visibility": "public"
 						},
 						{
@@ -19364,7 +19270,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFfukMAmN7b62s="
 					},
-					"name": "Persistance Provider",
+					"name": "Persistence Provider",
 					"ownedElements": [
 						{
 							"_type": "UMLInterfaceRealization",
