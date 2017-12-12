@@ -8,7 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(OilCompany.class)
 public abstract class OilCompany_ extends de.othr.heid.swheidflotankstelle.entity.SingleIdEntity_ {
 
-	public static volatile SingularAttribute<OilCompany, Long> zipCode;
+	public static volatile SingularAttribute<OilCompany, String> zipCode;
 	public static volatile SingularAttribute<OilCompany, String> street;
 	public static volatile SingularAttribute<OilCompany, String> name;
 	public static volatile SingularAttribute<OilCompany, String> houseNr;

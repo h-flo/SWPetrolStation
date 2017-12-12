@@ -6,6 +6,7 @@
 package de.othr.heid.swheidflotankstelle.ui;
 
 import de.othr.heid.swheidflotankstelle.entity.Fuel;
+import de.othr.heid.swheidflotankstelle.entity.FuelTank;
 import de.othr.heid.swheidflotankstelle.entity.Student;
 import de.othr.heid.swheidflotankstelle.service.CRMService;
 import de.othr.heid.swheidflotankstelle.service.DeliveryService;
@@ -14,11 +15,14 @@ import de.othr.heid.swheidflotankstelle.service.StudierendenService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -50,6 +54,7 @@ public class EntityTester extends HttpServlet {
     private CRMService crmService;
     
     
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -78,9 +83,14 @@ public class EntityTester extends HttpServlet {
             fuelService.changeFuelPrice(1, 1.14);
             */
             
-            
-            
-            //out.println("Fuelpreis wurde geändert: " + f.getPrice());
+            FuelTank f2 = new FuelTank();
+            f2.setFillLevel(5000.00);
+            Fuel fuel = fuelService.getFuelByType("ultimate diesel");
+            f2.setFuel(fuel);
+            f2 = fuelService.addFuelTank(f2);
+            System.out.println("Fueltank wurde hinzugefügt");
+
+     
             
             out.println("</body>");
             out.println("</html>");

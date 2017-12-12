@@ -16,14 +16,14 @@ public class ShippingCompany extends SingleIdEntity {
     
     private String name;
     private String description;
-    private long zipCode;
+    private String zipCode;
     private String street;
     private String houseNr;
 
     public ShippingCompany() {
     }
 
-    public ShippingCompany(String name, String description, long zipCode, String street, String houseNr) {
+    public ShippingCompany(String name, String description, String zipCode, String street, String houseNr) {
         this.name = name;
         this.description = description;
         this.zipCode = zipCode;
@@ -39,7 +39,7 @@ public class ShippingCompany extends SingleIdEntity {
         return description;
     }
 
-    public long getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
@@ -59,7 +59,7 @@ public class ShippingCompany extends SingleIdEntity {
         this.description = description;
     }
 
-    public void setZipCode(long zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 

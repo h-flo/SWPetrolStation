@@ -8,10 +8,12 @@ package de.othr.heid.swheidflotankstelle.entity;
 import java.io.Serializable;
 import javax.persistence.Entity;
 
+
 /**
  *
  * @author Flo
  */
+
 
 @Entity
 public class Fuel extends SingleIdEntity{
@@ -41,6 +43,11 @@ public class Fuel extends SingleIdEntity{
     public Fuel(String fueltype, double price) {
         this.fueltype = fueltype;
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "" + fueltype;
     }
     
     

@@ -15,14 +15,14 @@ import javax.persistence.Entity;
 public class OilCompany extends SingleIdEntity {
     
     private String name;
-    private long zipCode;
+    private String zipCode;
     private String street;
     private String houseNr;
 
     public OilCompany() {
     }
 
-    public OilCompany(String name, long zipCode, String street, String houseNr) {
+    public OilCompany(String name, String zipCode, String street, String houseNr) {
         this.name = name;
         this.zipCode = zipCode;
         this.street = street;
@@ -33,7 +33,7 @@ public class OilCompany extends SingleIdEntity {
         return name;
     }
 
-    public long getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
@@ -49,7 +49,7 @@ public class OilCompany extends SingleIdEntity {
         this.name = name;
     }
 
-    public void setZipCode(long zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 

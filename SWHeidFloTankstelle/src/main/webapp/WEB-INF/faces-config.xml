@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <navigation-rule>	
+        <description>Navigationsregeln</description>	
+        <from-view-id>*</from-view-id>
+        <navigation-case>	
+            <from-outcome>ShippingComp</from-outcome>	
+            <to-view-id>ShippingCompanies.xhtml</to-view-id>	
+        </navigation-case>
+        
+        <navigation-case>	
+            <from-outcome>OilComp</from-outcome>	
+            <to-view-id>OilCompanies.xhtml</to-view-id>	
+        </navigation-case>
+        
+       <navigation-case>	
+            <from-outcome>Deliv</from-outcome>	
+            <to-view-id>Deliveries.xhtml</to-view-id>	
+        </navigation-case>
+        
+        <navigation-case>	
+            <from-outcome>Orders</from-outcome>	
+            <to-view-id>Orders.xhtml</to-view-id>	
+        </navigation-case>
+        
+        <navigation-case>	
+            <from-outcome>MainFuel</from-outcome>	
+            <to-view-id>Fuel_Index.xhtml</to-view-id>	
+        </navigation-case>
+        
+        <navigation-case>	
+            <from-outcome>AddFuel</from-outcome>	
+            <to-view-id>Fuel_add.xhtml</to-view-id>	
+        </navigation-case>
+        
+        <navigation-case>	
+            <from-outcome>ChangeFuel</from-outcome>	
+            <to-view-id>Fuel_change.xhtml</to-view-id>	
+        </navigation-case>
+        
+        <navigation-case>	
+            <from-outcome>RemoveFuel</from-outcome>	
+            <to-view-id>Fuel_remove.xhtml</to-view-id>	
+        </navigation-case>
+        
+        
+    </navigation-rule>
+    
+    
+    
+    
+    
+</faces-config>

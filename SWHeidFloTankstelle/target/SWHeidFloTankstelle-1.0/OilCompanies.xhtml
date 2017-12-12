@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Oil Company Management</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:include src="menu.xhtml" />
+    </h:head>
+    <h:body>
+        <h1>Oil Company Management</h1>
+        <div> 
+            <h:form>            
+                <h:dataTable var="oilcompany" value="#{oilCompModel.allOilCompanies}">
+                    <h:column>
+                        <h:selectBooleanCheckbox value="#{oilCompModel.checked[oilcompany]}"/>
+                    </h:column>
+                    <h:column>    				
+                        <f:facet name="header">Nr.</f:facet>  
+                            #{oilcompany.id}
+                    </h:column>
+
+                    <h:column>    				
+                        <f:facet name="header">Name</f:facet>  
+                            #{oilcompany.name}
+                    </h:column>
+                    
+                </h:dataTable>
+                <h:commandButton value="Remove selected" action="#{oilCompModel.removeOilCompany()}"/>
+            </h:form>
+        </div>
+        <div> 
+            <h3>Add a new Oil Company</h3>
+            <h:form> 
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Name"/>
+                    <h:inputText value="#{oilCompModel.name}" required="true" requiredMessage="Please enter a Name for the Oil Company."/>
+
+                    <h:outputLabel value="ZipCode"/>
+                    <h:inputText value="#{oilCompModel.zipCode}"/>
+
+                    <h:outputLabel value="Street"/>
+                    <h:inputText value="#{oilCompModel.street}"/>
+
+                    <h:outputLabel value="HouseNr"/>
+                    <h:inputText value="#{oilCompModel.houseNr}"/>
+                    
+                    <h:commandButton value="Add Oil Company" action="#{oilCompModel.verifyOilCompany()}"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>
