@@ -14,6 +14,39 @@ and open the template in the editor.
         <ui:include src="menu.xhtml" />
     </h:head>
     <body>
-        <div>TODO write content</div>
+         <div> 
+            <h:form>            
+                <h:dataTable border="1" var="order" value="#{orderModel.allOrders}">
+                    <h:column>    				
+                        <f:facet name="header">Nr.</f:facet>  
+                            #{order.id}
+                    </h:column>
+                    <h:column>    				
+                        <f:facet name="header">OilOrderId</f:facet>  
+                            #{order.oilCompanyOrderId}
+                    </h:column>
+                    <h:column>    				
+                        <f:facet name="header">OilCompany</f:facet>  
+                            #{order.oilCompany.name}
+                    </h:column>
+                    <h:column>    				
+                        <f:facet name="header">Fueltype</f:facet>  
+                            #{order.fuel.fueltype}
+                    </h:column>    
+                    <h:column>    				
+                        <f:facet name="header">Amount</f:facet>  
+                            #{order.amount}
+                    </h:column>
+                    <h:column>    				
+                        <f:facet name="header">Price</f:facet>  
+                            #{order.orderPrice}
+                    </h:column>    
+                    <h:column>    				
+                        <f:facet name="header">Orderdate</f:facet>  
+                            #{order.orderDate}
+                    </h:column>    
+                </h:dataTable>
+            </h:form>
+        </div>
     </body>
 </html>

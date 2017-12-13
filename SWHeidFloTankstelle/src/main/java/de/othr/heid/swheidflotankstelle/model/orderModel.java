@@ -3,92 +3,87 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.othr.heid.swheidflotankstelle.entity;
+package de.othr.heid.swheidflotankstelle.model;
 
+import de.othr.heid.swheidflotankstelle.entity.Fuel;
+import de.othr.heid.swheidflotankstelle.entity.OilCompany;
+import de.othr.heid.swheidflotankstelle.entity.PSOrder;
+import de.othr.heid.swheidflotankstelle.service.DeliveryService;
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author Flo
  */
-@Entity
-public class PSOrder extends SingleIdEntity{
+@Named
+@SessionScoped
+public class orderModel implements Serializable {
+
+    @Inject
+    private DeliveryService deliveryService;
     
     private long oilCompanyOrderId;
-    @ManyToOne
     private OilCompany oilCompany;
-    @ManyToOne
     private Fuel fuel;
     private double amount;
     private double orderPrice;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date orderDate;
 
-    public PSOrder() {
-    }
-
-    public PSOrder(long oilCompanyOrderId, OilCompany oilCompany, Fuel fuel, double amount, double orderPrice, Date orderDate) {
-        this.oilCompanyOrderId = oilCompanyOrderId;
-        this.oilCompany = oilCompany;
-        this.fuel = fuel;
-        this.amount = amount;
-        this.orderPrice = orderPrice;
-        this.orderDate = orderDate;
+    public Collection<PSOrder> getAllOrders() {
+        return this.deliveryService.getAllOrders();
     }
 
     public long getOilCompanyOrderId() {
         return oilCompanyOrderId;
     }
 
-    public OilCompany getOilCompany() {
-        return oilCompany;
-    }
-
-    public Fuel getFuel() {
-        return fuel;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public double getOrderPrice() {
-        return orderPrice;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
     public void setOilCompanyOrderId(long oilCompanyOrderId) {
         this.oilCompanyOrderId = oilCompanyOrderId;
+    }
+
+    public OilCompany getOilCompany() {
+        return oilCompany;
     }
 
     public void setOilCompany(OilCompany oilCompany) {
         this.oilCompany = oilCompany;
     }
 
+    public Fuel getFuel() {
+        return fuel;
+    }
+
     public void setFuel(Fuel fuel) {
         this.fuel = fuel;
+    }
+
+    public double getAmount() {
+        return amount;
     }
 
     public void setAmount(double amount) {
         this.amount = amount;
     }
 
+    public double getOrderPrice() {
+        return orderPrice;
+    }
+
     public void setOrderPrice(double orderPrice) {
         this.orderPrice = orderPrice;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
     }
 
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
-    
-    
-    
-    
-    
+
 }

@@ -7,13 +7,15 @@ package de.othr.heid.swheidflotankstelle.ui;
 
 import de.othr.heid.swheidflotankstelle.entity.Fuel;
 import de.othr.heid.swheidflotankstelle.entity.FuelTank;
-import de.othr.heid.swheidflotankstelle.entity.Student;
+import de.othr.heid.swheidflotankstelle.entity.OilCompany;
+import de.othr.heid.swheidflotankstelle.entity.PSOrder;
 import de.othr.heid.swheidflotankstelle.service.CRMService;
 import de.othr.heid.swheidflotankstelle.service.DeliveryService;
 import de.othr.heid.swheidflotankstelle.service.FuelService;
 import de.othr.heid.swheidflotankstelle.service.StudierendenService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -83,12 +85,11 @@ public class EntityTester extends HttpServlet {
             fuelService.changeFuelPrice(1, 1.14);
             */
             
-            FuelTank f2 = new FuelTank();
-            f2.setFillLevel(5000.00);
-            Fuel fuel = fuelService.getFuelByType("ultimate diesel");
-            f2.setFuel(fuel);
-            f2 = fuelService.addFuelTank(f2);
-            System.out.println("Fueltank wurde hinzugefügt");
+            OilCompany oilCompany = crmService.getOilCompanyById(19);
+            Fuel fuel = fuelService.getFuelByType("diesel");
+            PSOrder order = new PSOrder(12345, oilCompany, fuel, 1500.00, 1725.00, new Date());
+            devService.addOrder(order);
+            System.out.println("Order wurde hinzugefügt");
 
      
             

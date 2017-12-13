@@ -116,4 +116,16 @@ public class CRMService {
         return entityManager.find(OilCompany.class, oc.getId());
     }
 
+    @Transactional
+    @WebMethod(exclude = true)
+    public ShippingCompany getShippingCompanyById(long Id) {
+        return entityManager.find(ShippingCompany.class, Id);
+    }
+
+    @Transactional
+    @WebMethod(exclude = true)
+    public OilCompany getOilCompanyById(long Id) {
+        return entityManager.find(OilCompany.class, Id);
+    }
+
 }

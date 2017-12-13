@@ -1,6 +1,7 @@
 de\othr\heid\swheidflotankstelle\entity\FuelTank.class
 de\othr\heid\swheidflotankstelle\entity\ShippingCompany.class
 de\othr\heid\swheidflotankstelle\converter\FuelConverter.class
+de\othr\heid\swheidflotankstelle\model\deliveryModel.class
 de\othr\heid\swheidflotankstelle\ui\EntityTester.class
 de\othr\heid\swheidflotankstelle\entity\Fuel.class
 de\othr\heid\swheidflotankstelle\entity\Student_.class
@@ -9,6 +10,7 @@ de\othr\heid\swheidflotankstelle\entity\OilCompany_.class
 de\othr\heid\swheidflotankstelle\service\StudierendenService.class
 de\othr\heid\swheidflotankstelle\service\FuelService.class
 de\othr\heid\swheidflotankstelle\entity\OilCompany.class
+de\othr\heid\swheidflotankstelle\model\orderModel.class
 de\othr\heid\swheidflotankstelle\model\shippingCompModel.class
 de\othr\heid\swheidflotankstelle\entity\ShippingCompany_.class
 de\othr\heid\swheidflotankstelle\entity\SingleIdEntity_.class

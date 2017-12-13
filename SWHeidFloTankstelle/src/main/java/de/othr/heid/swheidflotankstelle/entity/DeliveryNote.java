@@ -8,6 +8,7 @@ package de.othr.heid.swheidflotankstelle.entity;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -21,12 +22,12 @@ public class DeliveryNote extends SingleIdEntity{
     @ManyToOne
     private ShippingCompany shippingCompany;
     private double amount;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date deliveryDate;
 
     public DeliveryNote() {
     }
 
-    
     
     public DeliveryNote(Fuel fuel, ShippingCompany shippingCompany, double amount, Date deliveryDate) {
         this.fuel = fuel;
