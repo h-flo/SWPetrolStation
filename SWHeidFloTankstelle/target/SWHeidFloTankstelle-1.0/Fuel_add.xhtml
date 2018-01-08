@@ -11,9 +11,29 @@ and open the template in the editor.
     <head>
         <title>Fuel Management</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <ui:include src="menu.xhtml" />
+        <!--<ui:include src="menu.xhtml" />-->
+        <link rel="stylesheet" href="css/menu.css"/>
     </head>
     <body>
+        <h:form>
+            <div>
+                <ul id="menu-bar">
+                    <li><a href='index.xhtml'><span>Home</span></a></li>
+                    <li><a href='ShippingCompanies.xhtml'><span>Shipping Companies</span></a></li>
+                    <li><a href='OilCompanies.xhtml'><span>Oil Companies</span></a></li>
+                    <li><a href='Orders.xhtml'><span>Orders</span></a></li>
+                    <li><a href='Deliveries.xhtml'><span>Deliveries</span></a></li>
+                    <li><a class="active" href='Fuel_Index.xhtml'><span>Fuel</span></a>
+                        <ul>
+                            <li><a href ="Fuel_add.xhtml">Add Fuel</a></li>
+                            <li><a href ="Fuel_change.xhtml">Change Price</a></li>
+                            <li><a href ="Fuel_remove.xhtml">Remove Fuel</a></li>
+                            <li><a href ="Fuel_fillLevel.xhtml">Fill Levels</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </h:form>
         <div> 
             <h2>Add a new Fuel</h2>
             <h:form> 

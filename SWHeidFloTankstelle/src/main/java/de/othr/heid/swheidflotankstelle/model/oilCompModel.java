@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,7 +16,7 @@ import javax.inject.Named;
  * and open the template in the editor.
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class oilCompModel implements Serializable {
 
     @Inject

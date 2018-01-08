@@ -12,6 +12,7 @@ import de.othr.heid.swheidflotankstelle.service.DeliveryService;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,7 +22,7 @@ import javax.inject.Named;
  * @author Flo
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class orderModel implements Serializable {
 
     @Inject

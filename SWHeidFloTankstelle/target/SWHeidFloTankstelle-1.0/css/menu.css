@@ -67,6 +67,19 @@ and open the template in the editor.
   box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
   text-shadow: 2px 2px 3px #FFFFFF;
 }
+#menu-bar .active {
+  background: #0399D4;
+  background: linear-gradient(top,  #EDEDED,  #FFFFFF);
+  background: -ms-linear-gradient(top,  #EDEDED,  #FFFFFF);
+  background: -webkit-gradient(linear, left top, left bottom, from(#EDEDED), to(#FFFFFF));
+  background: -moz-linear-gradient(top,  #EDEDED,  #FFFFFF);
+  color: #444444;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  text-shadow: 2px 2px 3px #FFFFFF;
+}
+
 #menu-bar ul li:hover a, #menu-bar li:hover li a {
   background: none;
   border: none;

@@ -16,12 +16,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class shippingCompModel implements Serializable {
 
     @Inject

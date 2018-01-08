@@ -7,6 +7,7 @@ package de.othr.heid.swheidflotankstelle.service;
 
 import de.othr.heid.swheidflotankstelle.entity.DeliveryNote;
 import de.othr.heid.swheidflotankstelle.entity.Fuel;
+import de.othr.heid.swheidflotankstelle.entity.FuelTank;
 import de.othr.heid.swheidflotankstelle.entity.PSOrder;
 import de.othr.heid.swheidflotankstelle.entity.ShippingCompany;
 import java.util.Date;
@@ -17,7 +18,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -38,13 +38,25 @@ public class DeliveryService {
     //ShippingCompany erstellt DeliveryNote mit fuelType, amount, ShippingCompanyId
     @Transactional
     public DeliveryNote createDeliveryNote(DeliveryNote note) {
-        ShippingCompany sc = entityManager.find(ShippingCompany.class, note.getShippingCompany().getId());
-        note.setShippingCompany(sc);
-        Fuel fuel = fuelService.getFuelByType(note.getFuel().getFueltype());
-        note.setFuel(fuel);
-        note.setDeliveryDate(new Date());
-        entityManager.persist(note);
-        return note;
+        DeliveryNote deliveryNote = null;
+        try {
+            deliveryNote = new DeliveryNote();
+            deliveryNote.setAmount(note.getAmount());
+            ShippingCompany sc = entityManager.find(ShippingCompany.class, note.getShippingCompany().getId());
+            deliveryNote.setShippingCompany(sc);
+            Fuel fuel = fuelService.getFuelByType(note.getFuel().getFueltype());
+            deliveryNote.setFuel(fuel);
+            deliveryNote.setDeliveryDate(new Date());
+            entityManager.persist(note);
+            TypedQuery<FuelTank> query = entityManager.createQuery("SELECT f FROM FuelTank AS f Where f.fuel = :param1", FuelTank.class);
+            query.setParameter("param1", fuel);
+            List<FuelTank> list = query.getResultList();
+            FuelTank fuelTank = list.get(0);
+            fuelService.fillUpTank(fuelTank.getId(), note.getAmount());
+            return deliveryNote;
+        } catch (Exception ex) {
+            throw new RuntimeException ("Failed to create delivery note", ex);
+        } 
     }
 
     @Transactional
@@ -64,6 +76,7 @@ public class DeliveryService {
     }
 
     @Transactional
+    @WebMethod(exclude = true)
     public PSOrder addOrder(PSOrder order) {
         entityManager.persist(order);
         return order;

@@ -1,0 +1,500 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.swstelzer.stelzer.oth.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="OrderService" targetNamespace="http://service.swstelzer.stelzer.oth.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.swstelzer.stelzer.oth.de/" elementFormDefault="unqualified" targetNamespace="http://service.swstelzer.stelzer.oth.de/" version="1.0">
+
+  <xs:element name="createOrder" type="tns:createOrder"/>
+
+  <xs:element name="createOrderResponse" type="tns:createOrderResponse"/>
+
+  <xs:element name="getAllFuels" type="tns:getAllFuels"/>
+
+  <xs:element name="getAllFuelsResponse" type="tns:getAllFuelsResponse"/>
+
+  <xs:element name="getAllOrders" type="tns:getAllOrders"/>
+
+  <xs:element name="getAllOrdersResponse" type="tns:getAllOrdersResponse"/>
+
+  <xs:element name="getFuelByDTO" type="tns:getFuelByDTO"/>
+
+  <xs:element name="getFuelByDTOResponse" type="tns:getFuelByDTOResponse"/>
+
+  <xs:element name="getFuelByType" type="tns:getFuelByType"/>
+
+  <xs:element name="getFuelByTypeResponse" type="tns:getFuelByTypeResponse"/>
+
+  <xs:element name="getStatusDescription" type="tns:getStatusDescription"/>
+
+  <xs:element name="getStatusDescriptionResponse" type="tns:getStatusDescriptionResponse"/>
+
+  <xs:element name="insertFuel" type="tns:insertFuel"/>
+
+  <xs:element name="insertFuelResponse" type="tns:insertFuelResponse"/>
+
+  <xs:element name="oCcompany" type="tns:oCcompany"/>
+
+  <xs:element name="oCsingleIdEntity" type="tns:oCsingleIdEntity"/>
+
+  <xs:element name="removeFuel" type="tns:removeFuel"/>
+
+  <xs:element name="removeFuelResponse" type="tns:removeFuelResponse"/>
+
+  <xs:element name="updateFuelPrice" type="tns:updateFuelPrice"/>
+
+  <xs:element name="updateFuelPriceResponse" type="tns:updateFuelPriceResponse"/>
+
+  <xs:element name="updateStatus" type="tns:updateStatus"/>
+
+  <xs:element name="updateStatusResponse" type="tns:updateStatusResponse"/>
+
+  <xs:complexType name="createOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="orderDTO" type="tns:orderDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="orderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:long"/>
+      <xs:element minOccurs="0" name="customerId" type="xs:long"/>
+      <xs:element minOccurs="0" name="fuelType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createOrderResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:oCorder"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="oCorder">
+    <xs:complexContent>
+      <xs:extension base="tns:oCsingleIdEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:long"/>
+          <xs:element minOccurs="0" name="transportId" type="xs:long"/>
+          <xs:element minOccurs="0" name="orderDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="statusDescription" type="xs:string"/>
+          <xs:element minOccurs="0" name="orderPrice" type="xs:double"/>
+          <xs:element minOccurs="0" name="customer" type="tns:oCcustomer"/>
+          <xs:element minOccurs="0" name="fuel" type="tns:oCfuel"/>
+          <xs:element minOccurs="0" name="status" type="tns:oCstatus"/>
+          <xs:element minOccurs="0" name="forwardingCompany" type="tns:oCforwardingCompany"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="oCsingleIdEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="oCcustomer">
+    <xs:complexContent>
+      <xs:extension base="tns:oCcompany">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="oCcompany">
+    <xs:complexContent>
+      <xs:extension base="tns:oCsingleIdEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="address" type="tns:oCaddress"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="oCaddress">
+    <xs:complexContent>
+      <xs:extension base="tns:oCsingleIdEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="zip" type="xs:string"/>
+          <xs:element minOccurs="0" name="houseNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="street" type="xs:string"/>
+          <xs:element minOccurs="0" name="state" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="oCfuel">
+    <xs:complexContent>
+      <xs:extension base="tns:oCsingleIdEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fuelType" type="xs:string"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="price" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="oCforwardingCompany">
+    <xs:complexContent>
+      <xs:extension base="tns:oCcompany">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="updateStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:oCorder"/>
+      <xs:element minOccurs="0" name="arg1" type="tns:oCstatus"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateStatusResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllFuels">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllFuelsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:oCfuel"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFuelByDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:fuelDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fuelDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fueltype" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFuelByDTOResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:oCfuel"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getStatusDescription">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getStatusDescriptionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:oCorder"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllOrders">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllOrdersResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:oCorder"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertFuel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:oCfuel"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertFuelResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="updateFuelPrice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:oCfuel"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateFuelPriceResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getFuelByType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFuelByTypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:oCfuel"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeFuel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:oCfuel"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeFuelResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:simpleType name="oCstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PROCESSING"/>
+      <xs:enumeration value="SHIPPED"/>
+      <xs:enumeration value="FINISHED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createOrder">
+    <wsdl:part element="tns:createOrder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatusResponse">
+    <wsdl:part element="tns:updateStatusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertFuelResponse">
+    <wsdl:part element="tns:insertFuelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createOrderResponse">
+    <wsdl:part element="tns:createOrderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatusDescriptionResponse">
+    <wsdl:part element="tns:getStatusDescriptionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFuelByDTOResponse">
+    <wsdl:part element="tns:getFuelByDTOResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFuelByDTO">
+    <wsdl:part element="tns:getFuelByDTO" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllOrdersResponse">
+    <wsdl:part element="tns:getAllOrdersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllOrders">
+    <wsdl:part element="tns:getAllOrders" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateFuelPrice">
+    <wsdl:part element="tns:updateFuelPrice" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFuelByType">
+    <wsdl:part element="tns:getFuelByType" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeFuel">
+    <wsdl:part element="tns:removeFuel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFuelByTypeResponse">
+    <wsdl:part element="tns:getFuelByTypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeFuelResponse">
+    <wsdl:part element="tns:removeFuelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatus">
+    <wsdl:part element="tns:updateStatus" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllFuels">
+    <wsdl:part element="tns:getAllFuels" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllFuelsResponse">
+    <wsdl:part element="tns:getAllFuelsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatusDescription">
+    <wsdl:part element="tns:getStatusDescription" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateFuelPriceResponse">
+    <wsdl:part element="tns:updateFuelPriceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertFuel">
+    <wsdl:part element="tns:insertFuel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OrderService">
+    <wsdl:operation name="createOrder">
+      <wsdl:input message="tns:createOrder" name="createOrder">
+    </wsdl:input>
+      <wsdl:output message="tns:createOrderResponse" name="createOrderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatus">
+      <wsdl:input message="tns:updateStatus" name="updateStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:updateStatusResponse" name="updateStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFuels">
+      <wsdl:input message="tns:getAllFuels" name="getAllFuels">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllFuelsResponse" name="getAllFuelsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFuelByDTO">
+      <wsdl:input message="tns:getFuelByDTO" name="getFuelByDTO">
+    </wsdl:input>
+      <wsdl:output message="tns:getFuelByDTOResponse" name="getFuelByDTOResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatusDescription">
+      <wsdl:input message="tns:getStatusDescription" name="getStatusDescription">
+    </wsdl:input>
+      <wsdl:output message="tns:getStatusDescriptionResponse" name="getStatusDescriptionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllOrders">
+      <wsdl:input message="tns:getAllOrders" name="getAllOrders">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllOrdersResponse" name="getAllOrdersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertFuel">
+      <wsdl:input message="tns:insertFuel" name="insertFuel">
+    </wsdl:input>
+      <wsdl:output message="tns:insertFuelResponse" name="insertFuelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFuelPrice">
+      <wsdl:input message="tns:updateFuelPrice" name="updateFuelPrice">
+    </wsdl:input>
+      <wsdl:output message="tns:updateFuelPriceResponse" name="updateFuelPriceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFuelByType">
+      <wsdl:input message="tns:getFuelByType" name="getFuelByType">
+    </wsdl:input>
+      <wsdl:output message="tns:getFuelByTypeResponse" name="getFuelByTypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeFuel">
+      <wsdl:input message="tns:removeFuel" name="removeFuel">
+    </wsdl:input>
+      <wsdl:output message="tns:removeFuelResponse" name="removeFuelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrderServiceSoapBinding" type="tns:OrderService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFuels">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllFuels">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllFuelsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFuelByDTO">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFuelByDTO">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFuelByDTOResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatusDescription">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getStatusDescription">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStatusDescriptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllOrders">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllOrders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertFuel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="insertFuel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="insertFuelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFuelPrice">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateFuelPrice">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateFuelPriceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFuelByType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFuelByType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFuelByTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeFuel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeFuel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeFuelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderService">
+    <wsdl:port binding="tns:OrderServiceSoapBinding" name="OrderServicePort">
+      <soap:address location="http://im-lamport:8080/SWStelzer-0.3/OrderService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

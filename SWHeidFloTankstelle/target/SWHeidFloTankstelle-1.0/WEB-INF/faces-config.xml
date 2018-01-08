@@ -45,7 +45,11 @@
             <from-outcome>RemoveFuel</from-outcome>	
             <to-view-id>Fuel_remove.xhtml</to-view-id>	
         </navigation-case>
-        
+                
+        <navigation-case>	
+            <from-outcome>FillLevel</from-outcome>	
+            <to-view-id>Fuel_fillLevel.xhtml</to-view-id>	
+        </navigation-case>
         
     </navigation-rule>
     

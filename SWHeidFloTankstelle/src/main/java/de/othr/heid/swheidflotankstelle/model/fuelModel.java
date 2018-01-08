@@ -9,6 +9,7 @@ import de.othr.heid.swheidflotankstelle.entity.Fuel;
 import de.othr.heid.swheidflotankstelle.service.FuelService;
 import java.io.Serializable;
 import java.util.Collection;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,7 +19,7 @@ import javax.inject.Named;
  * @author Flo
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class fuelModel implements Serializable {
 
     @Inject

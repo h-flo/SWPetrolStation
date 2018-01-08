@@ -12,10 +12,10 @@ import de.othr.heid.swheidflotankstelle.entity.PSOrder;
 import de.othr.heid.swheidflotankstelle.service.CRMService;
 import de.othr.heid.swheidflotankstelle.service.DeliveryService;
 import de.othr.heid.swheidflotankstelle.service.FuelService;
-import de.othr.heid.swheidflotankstelle.service.StudierendenService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -42,9 +42,6 @@ public class EntityTester extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    @Inject
-    private StudierendenService service;
     
     @Inject
     private FuelService fuelService;
@@ -84,12 +81,10 @@ public class EntityTester extends HttpServlet {
             
             fuelService.changeFuelPrice(1, 1.14);
             */
+            //Long temp = (Long)ThreadLocalRandom.current().nextLong(2000, 3000);
+            fuelService.refuel(6l, 900.00);
             
-            OilCompany oilCompany = crmService.getOilCompanyById(19);
-            Fuel fuel = fuelService.getFuelByType("diesel");
-            PSOrder order = new PSOrder(12345, oilCompany, fuel, 1500.00, 1725.00, new Date());
-            devService.addOrder(order);
-            System.out.println("Order wurde hinzugefügt");
+            System.out.println("Bestellt ");
 
      
             

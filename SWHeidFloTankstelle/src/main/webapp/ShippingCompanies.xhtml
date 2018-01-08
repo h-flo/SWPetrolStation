@@ -7,9 +7,29 @@
     <h:head>
         <title>Shipping Company Management</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <ui:include src="menu.xhtml" />
+        <!--<ui:include src="menu.xhtml" />-->
+        <link rel="stylesheet" href="css/menu.css"/>
     </h:head>
     <h:body>
+        <h:form>
+            <div>
+                <ul id="menu-bar">
+                    <li><a href='index.xhtml'><span>Home</span></a></li>
+                    <li><a class="active" href='ShippingCompanies.xhtml'><span>Shipping Companies</span></a></li>
+                    <li><a href='OilCompanies.xhtml'><span>Oil Companies</span></a></li>
+                    <li><a href='Orders.xhtml'><span>Orders</span></a></li>
+                    <li><a href='Deliveries.xhtml'><span>Deliveries</span></a></li>
+                    <li><a href='Fuel_Index.xhtml'><span>Fuel</span></a>
+                        <ul>
+                            <li><a href ="Fuel_add.xhtml">Add Fuel</a></li>
+                            <li><a href ="Fuel_change.xhtml">Change Price</a></li>
+                            <li><a href ="Fuel_remove.xhtml">Remove Fuel</a></li>
+                            <li><a href ="Fuel_fillLevel.xhtml">Fill Levels</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </h:form>
         <h1>Shipping Company Management</h1>
         <div> 
             <h:form>            
@@ -17,7 +37,7 @@
                     <h:column>
                         <h:selectBooleanCheckbox value="#{shippingCompModel.checked[shippingcompany]}"/>
                     </h:column>
-                    
+
                     <h:column>    				
                         <f:facet name="header">Nr.</f:facet>  
                             #{shippingcompany.id}
@@ -27,13 +47,13 @@
                         <f:facet name="header">Name</f:facet>  
                             #{shippingcompany.name}
                     </h:column>
-                    
+
                     <h:column>    				
                         <f:facet name="header">Description</f:facet>  
                             #{shippingcompany.description}
                     </h:column>
 
-                    
+
                 </h:dataTable>
                 <h:commandButton value="Remove selected" action="#{shippingCompModel.removeShippingCompany()}"/>
             </h:form>
@@ -56,7 +76,7 @@
 
                     <h:outputLabel value="HouseNr"/>
                     <h:inputText value="#{shippingCompModel.houseNr}"/>
-                    
+
                     <h:commandButton value="AddShippingComp" action="#{shippingCompModel.verifyShippingCompany()}"/>
                 </h:panelGrid>
             </h:form>
