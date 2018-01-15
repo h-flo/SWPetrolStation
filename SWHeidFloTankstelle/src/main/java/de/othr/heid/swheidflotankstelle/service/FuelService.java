@@ -23,10 +23,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.jws.WebMethod;
-import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.xml.ws.WebServiceRef;
@@ -36,7 +34,6 @@ import javax.xml.ws.WebServiceRef;
  * @author Flo
  */
 @RequestScoped
-@WebService
 public class FuelService {
 
     Environment environment = TestOrderService.environment;
@@ -54,7 +51,7 @@ public class FuelService {
     private EntityManager entityManager;
 
     private static final Long OWNID = 39L;
-    private Random rnjesus = new Random();
+    //private Random rng = new Random();
 
     @Transactional
     @WebMethod(exclude = true)
@@ -162,22 +159,22 @@ public class FuelService {
     public void refuel(long tankId, double amount) {
         FuelTank f = entityManager.find(FuelTank.class, tankId);
         double filling = f.getFillLevel();
-        Long orderAmount = ThreadLocalRandom.current().nextLong(2000, 3000);
+        Long orderAmount = ThreadLocalRandom.current().nextLong(2000, 3000); 
         if ((filling >= 1500.00) && ((filling - amount) < 1500.00)) {
-            //Ordering Fuel if Fill level goes beyond 1500 Liters
+            //Ordering between 2000 and 3000 Liters of Fuel if Fill level goes beyond 1500 Liters
             this.orderFuel(orderAmount, f.getFuel().getFueltype());
         } else if ((filling - amount) < 0) {
             return;
-        } else {
-            orderAmount = 0L; //Für Testfall
-        }
+        } 
+//        else {
+//            orderAmount = 0L; //Für Testing, ohne deliveries
+//        }
         filling -= amount;
         filling = (double) Math.round(filling * 100) / 100;
-        //f.setFillLevel(filling);
+        f.setFillLevel(filling);
         //Zu Testzwecken: Auffüllen des Tanks solange Josef in Uganda chillt
-        f.setFillLevel(filling + (double) (Math.round(orderAmount * 100) / 100));
+//        f.setFillLevel(filling + (double) (Math.round(orderAmount * 100) / 100)); //Für Testing, ohne deliveries
         entityManager.merge(f);
-        //System.out.println("" + amount + " Liter " + f.getFuel().getFueltype() + " getankt. ");
     }
 
     @Transactional
@@ -208,10 +205,9 @@ public class FuelService {
     public void fillUpTank(long tankId, double amount) {
         //Runden auf 2 Nachkommastellen
         amount = (double) Math.round(amount * 100) / 100;
-
         FuelTank f = entityManager.find(FuelTank.class, tankId);
         double filling = f.getFillLevel();
-        filling += amount;
+        filling = (double) (Math.round((filling + amount) * 100) / 100); //Runden auf 2 Nachkommastellen
         f.setFillLevel(filling);
         entityManager.merge(f);
     }

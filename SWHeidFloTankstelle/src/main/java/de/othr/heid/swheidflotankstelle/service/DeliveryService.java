@@ -47,16 +47,16 @@ public class DeliveryService {
             Fuel fuel = fuelService.getFuelByType(note.getFuel().getFueltype());
             deliveryNote.setFuel(fuel);
             deliveryNote.setDeliveryDate(new Date());
-            entityManager.persist(note);
+            entityManager.persist(deliveryNote);
             TypedQuery<FuelTank> query = entityManager.createQuery("SELECT f FROM FuelTank AS f Where f.fuel = :param1", FuelTank.class);
             query.setParameter("param1", fuel);
             List<FuelTank> list = query.getResultList();
             FuelTank fuelTank = list.get(0);
             fuelService.fillUpTank(fuelTank.getId(), note.getAmount());
-            return deliveryNote;
         } catch (Exception ex) {
             throw new RuntimeException ("Failed to create delivery note", ex);
-        } 
+        }
+        return deliveryNote;
     }
 
     @Transactional

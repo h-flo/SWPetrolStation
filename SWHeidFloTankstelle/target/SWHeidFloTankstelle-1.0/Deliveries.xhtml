@@ -36,7 +36,7 @@ and open the template in the editor.
         </h:form>
         <div> 
             <h:form>            
-                <h:dataTable var="delivery" value="#{deliveryModel.allDeliveries}">
+                <h:dataTable border="1" var="delivery" value="#{deliveryModel.allDeliveries}">
                     <h:column>    				
                         <f:facet name="header">Nr.</f:facet>  
                             #{delivery.id}
@@ -47,7 +47,7 @@ and open the template in the editor.
                     </h:column>
                     <h:column>    				
                         <f:facet name="header">Fueltype</f:facet>  
-                            #{delivery.Fuel.fueltype}
+                            #{delivery.fuel.fueltype}
                     </h:column>    
                     <h:column>    				
                         <f:facet name="header">Amount</f:facet>  

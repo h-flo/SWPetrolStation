@@ -7,14 +7,13 @@ package de.othr.heid.swheidflotankstelle.model;
 
 import de.othr.heid.swheidflotankstelle.entity.DeliveryNote;
 import de.othr.heid.swheidflotankstelle.entity.Fuel;
-import de.othr.heid.swheidflotankstelle.entity.PSOrder;
 import de.othr.heid.swheidflotankstelle.entity.ShippingCompany;
 import de.othr.heid.swheidflotankstelle.service.DeliveryService;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -34,12 +33,8 @@ public class deliveryModel implements Serializable {
     private double amount;
     private Date deliveryDate;
 
-    public Collection<DeliveryNote> getAllDeliveries() {
+    public List<DeliveryNote> getAllDeliveries() {
         return this.deliveryService.getAllDeliveries();
-    }
-    
-    public Fuel getFuel() {
-        return fuel;
     }
 
     public void setFuel(Fuel fuel) {
@@ -56,6 +51,10 @@ public class deliveryModel implements Serializable {
 
     public double getAmount() {
         return amount;
+    }
+
+    public Fuel getFuel() {
+        return fuel;
     }
 
     public void setAmount(double amount) {

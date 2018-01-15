@@ -8,10 +8,8 @@ package de.othr.heid.swheidflotankstelle.service;
 import de.othr.heid.swheidflotankstelle.entity.OilCompany;
 import de.othr.heid.swheidflotankstelle.entity.ShippingCompany;
 import java.util.List;
-import java.util.Random;
 import javax.enterprise.context.RequestScoped;
 import javax.jws.WebMethod;
-import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -22,7 +20,6 @@ import javax.transaction.Transactional;
  * @author Flo
  */
 @RequestScoped
-@WebService
 public class CRMService {
 
     @PersistenceContext(unitName = "swHeidPU")

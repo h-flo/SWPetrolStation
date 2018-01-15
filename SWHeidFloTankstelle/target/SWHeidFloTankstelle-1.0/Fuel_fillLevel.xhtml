@@ -37,7 +37,7 @@ and open the template in the editor.
         <h1>Current Fuel Levels</h1>
         <div> 
             <h:form>            
-                <h:dataTable border="1" var="fueltank" value="#{fuelTankModel.allFuelTanks}">
+                <h:dataTable width="400pt" border="1" var="fueltank" value="#{fuelTankModel.allFuelTanks}">
                     <h:column>    				
                         <f:facet name="header">Nr.</f:facet>  
                             #{fueltank.id}

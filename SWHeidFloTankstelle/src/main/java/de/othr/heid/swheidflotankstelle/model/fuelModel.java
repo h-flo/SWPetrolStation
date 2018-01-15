@@ -10,7 +10,6 @@ import de.othr.heid.swheidflotankstelle.service.FuelService;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 

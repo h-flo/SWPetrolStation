@@ -29,7 +29,7 @@ public class PingService {
     private List<FuelTank> tankList;
     private List<Fuel> fuelList;
     private int size;
-    private Random rnjesus = new Random();
+    private Random rng = new Random();
     private int tankNr;
 
     public List<FuelTank> getTankList() {
@@ -60,9 +60,9 @@ public class PingService {
     public void refuelPing() {
         tankList = fuelService.getAllFuelTanks();
         size = tankList.size();
-        tankNr = rnjesus.nextInt(size);
+        tankNr = rng.nextInt(size);
         FuelTank f = tankList.get(tankNr);
-        double temp = ThreadLocalRandom.current().nextDouble(5.0, 10.0);    //Zwischen 5 und 10 Litern tanken
+        double temp = ThreadLocalRandom.current().nextDouble(30.0, 60.0);    //Zwischen 5 und 10 Litern tanken
         temp = (double) Math.round(temp * 100)/100;     //Runden auf 2 Nachkommastellen
         fuelService.refuel(f.getId(), temp);
     }

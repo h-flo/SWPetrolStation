@@ -5,7 +5,6 @@
  */
 package de.othr.heid.swheidflotankstelle.service;
 
-
 import de.othr.heid.swheidflotankstelle.order.FuelDTO;
 import de.othr.heid.swheidflotankstelle.order.OCfuel;
 import de.othr.heid.swheidflotankstelle.order.OCorder;
@@ -14,7 +13,6 @@ import de.othr.heid.swheidflotankstelle.resources.Environment;
 import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.enterprise.context.RequestScoped;
-import javax.jws.WebService;
 import testing.IOrderService;
 
 /**
@@ -22,15 +20,13 @@ import testing.IOrderService;
  * @author Flo
  */
 
-@WebService
 @RequestScoped
 public class TestOrderService implements IOrderService, Serializable {
 
-    public static Environment environment = Environment.TEST;
+    public static Environment environment = Environment.PROD;
     private Double price;
     private Double newPrice;
-    
-    
+
     @Override
     public OCorder createOrder(OrderDTO orderDTO) {
 //        System.out.println("Test Method for Create order");
@@ -41,11 +37,11 @@ public class TestOrderService implements IOrderService, Serializable {
             order.setTransportId(333L);
             price = orderDTO.getAmount() * 1.3;
             order.setOrderPrice(price);
-            return order;
+
         } catch (Exception ex) {
             throw new RuntimeException("Failed to create order", ex);
         }
-            
+        return order;
 
     }
 
@@ -59,10 +55,11 @@ public class TestOrderService implements IOrderService, Serializable {
             //Random Price between 1.0 and 2.0
             newPrice = ThreadLocalRandom.current().nextDouble(1.0, 2.0);
             fuel.setPrice((double) Math.round(newPrice * 100) / 100);
-            return fuel;
+
         } catch (Exception ex) {
             throw new RuntimeException("Failed to update fuelprice", ex);
-        }   
+        }
+        return fuel;
     }
-   
+
 }
